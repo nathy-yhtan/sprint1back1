@@ -1,11 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace sprint1back
+﻿namespace sprint1back
 {
-    internal class Bebida : ItemCardapio
+    public class Bebida : ItemCardapio
     {
-        public int Tamanho;
+        public string Tamanho { get; set; }
+
+        public Bebida(int codigo, string descricao, double precoBase, string tamanho)
+            : base(codigo, descricao, precoBase)
+        {
+            Tamanho = tamanho;
+        }
+
+        public override double CalcularPrecoFinal()
+        {
+            if (Tamanho == "500ml") return PrecoBase + 2.00;
+            if (Tamanho == "1L") return PrecoBase + 4.00;
+            return PrecoBase; // Valor padrão para 300ml
+        }
     }
 }
