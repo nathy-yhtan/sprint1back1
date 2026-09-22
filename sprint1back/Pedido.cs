@@ -5,15 +5,14 @@ namespace sprint1back
 {
     public class Pedido
     {
-        // Propriedade para armazenar o nome do cliente
-        public string NomeCliente { get; set; }
+        public string NomeCliente { get; set; } //pra no final aparecer na "notinha"
 
         public List<ItemCardapio> Itens { get; set; } = new List<ItemCardapio>();
 
         public void AdicionarItem(ItemCardapio item)
         {
             Itens.Add(item);
-            Console.WriteLine($"\n[+] {item.Descricao} adicionado ao pedido!");
+            Console.WriteLine($"\n{item.Descricao} adicionado ao pedido!");
         }
 
         public double CalcularTotalPedido()
@@ -28,28 +27,59 @@ namespace sprint1back
 
         public void ExibirResumo()
         {
-            Console.WriteLine("\n================ RESUMO DO PEDIDO ================");
+            Console.WriteLine("\n================ CARRINHO DE COMPRAS ================");
 
-            // Exibe o nome do cliente se estiver preenchido
             if (!string.IsNullOrEmpty(NomeCliente))
             {
-                Console.WriteLine($"CLIENTE: {NomeCliente.ToUpper()}");
+                Console.WriteLine($"CLIENTE: {NomeCliente}");
                 Console.WriteLine("--------------------------------------------------");
             }
 
             if (Itens.Count == 0)
             {
-                Console.WriteLine("Nenhum item no pedido no momento.");
+                Console.WriteLine("O seu carrinho está vazio no momento.");
             }
             else
             {
                 foreach (var item in Itens)
                 {
-                    Console.WriteLine($"- {item.Descricao} | Valor: R$ {item.CalcularPrecoFinal():F2}");
+                    Console.WriteLine($"{item.Descricao} | Valor: R$ {item.CalcularPrecoFinal():F2}");
                 }
-                Console.WriteLine($"\nTOTAL FINAL: R$ {CalcularTotalPedido():F2}");
+                Console.WriteLine($"\nSUBTOTAL ATUAL: R$ {CalcularTotalPedido():F2}");
             }
-            Console.WriteLine("==================================================");
+            Console.WriteLine("====================================================");
+        }
+
+        public bool FinalizarPedido()
+        {
+            Console.WriteLine("\n================ FINALIZAÇÃO DA COMPRA ================");
+
+            if (Itens.Count == 0) //finalizar sem comprar nada
+            {
+                Console.WriteLine("Seu carrinho está vazio! Adicione algum item antes de finalizar a compra.");
+                Console.WriteLine("=======================================================");
+                return false;
+            }
+
+            if (!string.IsNullOrEmpty(NomeCliente))
+            {
+                Console.WriteLine($"CLIENTE: {NomeCliente}");
+                Console.WriteLine("-------------------------------------------------------");
+            }
+
+            Console.WriteLine("ITENS COMPRADOS:");
+            foreach (var item in Itens)
+            {
+                Console.WriteLine($"{item.Descricao} | R$ {item.CalcularPrecoFinal():F2}");
+            }
+
+            double total = CalcularTotalPedido();
+            Console.WriteLine($"\nTOTAL A PAGAR: R$ {total:F2}");
+            Console.WriteLine("-------------------------------------------------------");
+            Console.WriteLine($"'PAGAMENTO REALIZADO COM SUCESSO! VOLTE SEMPRE AO SIRI CASCUDO, {NomeCliente}!'");
+            Console.WriteLine("=======================================================");
+
+            return true; //acabou compra
         }
     }
 }

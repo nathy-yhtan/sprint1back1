@@ -13,7 +13,6 @@
             PrecoBase = precoBase;
         }
 
-        // Método que Lanche e Bebida vão personalizar (Polimorfismo)
-        public abstract double CalcularPrecoFinal();
+        public abstract double CalcularPrecoFinal(); //metodo que Lanche e Bebida vão personalizar (polimorfismo)
     }
 }
