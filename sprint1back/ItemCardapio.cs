@@ -1,6 +1,8 @@
-﻿namespace sprint1back
+﻿using sprint1back.Interfaces;
+
+namespace sprint1back
 {
-    public abstract class ItemCardapio
+    public abstract class ItemCardapio : ICalcularPrecoFinal //assina a interface
     {
         public int Codigo { get; set; }
         public string Descricao { get; set; }
@@ -13,6 +15,6 @@
             PrecoBase = precoBase;
         }
 
-        public abstract double CalcularPrecoFinal(); //metodo que Lanche e Bebida vão personalizar (polimorfismo)
+        public abstract double CalcularPrecoFinal(); //metodo: que Lanche e Bebida vão personalizar (polimorfismo); e que: é exigido pela interface
     }
 }

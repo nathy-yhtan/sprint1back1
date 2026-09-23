@@ -6,20 +6,16 @@ namespace sprint1back
     {
         static void Main(string[] args)
         {
-            // Permite exibir caracteres especiais e acentos no console
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.OutputEncoding = System.Text.Encoding.UTF8; //exibir caracteres especiais
 
-            // Instância do carrinho de compras (Pedido)
             Pedido pedidoAtual = new Pedido();
 
-            // Boas-vindas personalizadas do Seu Sirigueijo
             Console.WriteLine("'EI, TÁ SENTINDO ESTE CHEIRO DELICIOSO? VEM DA COZINHA DO MEU RESTAURANTE! VENHA PROVAR UM PRATO, EU MESMO TE ATENDO. ME DIGA, QUAL SEU NOME?'");
             string nomeCliente = Console.ReadLine()!;
             pedidoAtual.NomeCliente = nomeCliente;
 
             Console.WriteLine($"\n'A PROPÓSITO, MEU NOME É SEU SIRIGUEIJO, {nomeCliente}!'");
 
-            // Desenho ASCII do Seu Sirigueijo (Preservado da sua captura)
             Console.WriteLine(@"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                      ⠀⢠⣤⡞⣻⡄⠀⠀⣠⣼⢿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣷⣿⠏⠀⠀⢸⣿⣼⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -124,16 +120,14 @@ namespace sprint1back
                             break;
 
                         case "4":
-                            // Apenas visualiza o subtotal e os itens atuais
                             pedidoAtual.ExibirResumo();
                             break;
 
                         case "5":
-                            // Tenta finalizar a compra
                             bool comprou = pedidoAtual.FinalizarPedido();
                             if (comprou)
                             {
-                                executando = false; // Encerra o programa após pagamento realizado
+                                executando = false; //encerra o programa
                             }
                             break;
 
