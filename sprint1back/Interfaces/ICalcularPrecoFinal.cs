@@ -6,6 +6,6 @@ namespace sprint1back.Interfaces
 {
     public interface ICalcularPrecoFinal //contrato
     {
-        double CalcularPrecoFinal();
+        public abstract double CalcularPrecoFinal();
     }
 }

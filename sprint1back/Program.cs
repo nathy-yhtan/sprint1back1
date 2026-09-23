@@ -68,6 +68,8 @@ namespace sprint1back
 
                     string opcao = Console.ReadLine();
 
+                    Console.Clear(); //pra nao encher muito a tela
+
                     switch (opcao)
                     {
                         case "1":
@@ -148,7 +150,6 @@ namespace sprint1back
                 }
 
                 Console.WriteLine();
-
             }
         }
     }
