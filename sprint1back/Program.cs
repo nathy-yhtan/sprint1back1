@@ -51,24 +51,30 @@ namespace sprint1back
 
             Console.WriteLine("'O SIRI CASCUDO TE DÁ BOAS-VINDAS!'\n");
 
+            Console.WriteLine("Pressione ENTER para acessar o Menu...");
+            Console.ReadLine();
+
             bool executando = true;
 
             while (executando)
             {
+                Console.Clear(); //pra nao encher muito a tela e deixar menu em cima
                 try
                 {
                     Console.WriteLine("================ MENU DO SIRI CASCUDO ================");
                     Console.WriteLine("1. Pedir Hambúrguer de Siri (R$ 18.50)");
                     Console.WriteLine("2. Pedir Batatas Fritas do Mar (R$ 10.00)");
-                    Console.WriteLine("3. Pedir Refrigerante da Bolha (Preço Base: R$ 7.00)");
+                    Console.WriteLine("3. Pedir Refrigerante da Bolha (Preços variam)");
                     Console.WriteLine("4. Visualizar Carrinho");
                     Console.WriteLine("5. Finalizar Compra");
                     Console.WriteLine("6. Sair do Restaurante");
+                    Console.WriteLine("======================================================");
                     Console.Write("Escolha uma opção (1 a 6): ");
 
                     string opcao = Console.ReadLine();
 
-                    Console.Clear(); //pra nao encher muito a tela
+                    Console.WriteLine("------------------------------------------------------"); //pras respostas ficarem abaixo
+
 
                     switch (opcao)
                     {
@@ -92,7 +98,7 @@ namespace sprint1back
                             Lanche batata = new Lanche(102, "Batatas Fritas", 10.00);
 
                             Console.WriteLine("\n--- INGREDIENTES EXTRAS ---");
-                            Console.Write("Deseja adicionar Molho Secreto extra (+R$ 2,00)? (s/n): ");
+                            Console.Write("Deseja adicionar Molho Secreto (+R$ 2,00)? (s/n): ");
                             if (Console.ReadLine().ToLower() == "s") batata.IngredientesExtras.Add("Molho Secreto");
 
                             Console.Write("Deseja adicionar Pimenta das Profundezas (+R$ 2,00)? (s/n): ");
@@ -106,9 +112,9 @@ namespace sprint1back
 
                         case "3":
                             Console.WriteLine("\n--- TAMANHOS DE REFRIGERANTE DA BOLHA ---");
-                            Console.WriteLine("a) 300ml (Preço Base: R$ 7,00)");
-                            Console.WriteLine("b) 500ml (+ R$ 2,00)");
-                            Console.WriteLine("c) 1L (+ R$ 4,00)");
+                            Console.WriteLine("a) 300ml (R$ 7,00)");
+                            Console.WriteLine("b) 500ml (R$ 9,00)");
+                            Console.WriteLine("c) 1L (R$ 11,00)");
                             Console.Write("Escolha o tamanho (a/b/c): ");
 
                             string optTamanho = Console.ReadLine().ToLower();
@@ -142,14 +148,18 @@ namespace sprint1back
                             Console.WriteLine("\nOpção inválida! Digite um número de 1 a 6.");
                             break;
                     }
-                }
+                                                  }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"\n[ERRO SISPEDIDO] Ocorreu uma falha na entrada de dados: {ex.Message}");
                     Console.WriteLine("Por favor, tente novamente.\n");
                 }
 
-                Console.WriteLine();
+                if (executando) //um pause pra conseguir ler antes de recarregar
+                {
+                    Console.WriteLine("\nPressione ENTER para voltar ao Menu...");
+                    Console.ReadLine();
+                }
             }
         }
     }
