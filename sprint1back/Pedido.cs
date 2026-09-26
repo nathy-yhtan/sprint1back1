@@ -76,7 +76,7 @@ namespace sprint1back
             double total = CalcularTotalPedido();
             Console.WriteLine($"\nTOTAL A PAGAR: R$ {total:F2}");
             Console.WriteLine("-------------------------------------------------------");
-            Console.WriteLine($"'PAGAMENTO REALIZADO COM SUCESSO! VOLTE SEMPRE AO SIRI CASCUDO, {NomeCliente}!'");
+            Console.WriteLine($"'PAGAMENTO REALIZADO COM SUCESSO! VOLTE SEMPRE, SEU DINHEIRO É MUITO BEM-VINDO, {NomeCliente}!'");
             Console.WriteLine("=======================================================");
 
             return true; //acabou compra

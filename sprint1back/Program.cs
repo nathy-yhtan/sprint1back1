@@ -148,7 +148,7 @@ namespace sprint1back
                             Console.WriteLine("\nOpção inválida! Digite um número de 1 a 6.");
                             break;
                     }
-                                                  }
+                }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"\n[ERRO SISPEDIDO] Ocorreu uma falha na entrada de dados: {ex.Message}");
@@ -161,6 +161,10 @@ namespace sprint1back
                     Console.ReadLine();
                 }
             }
+
+            Console.WriteLine("\nPressione ENTER para sair..."); //pra n sair do console antes da mensagenzinha
+            Console.ReadLine();
+
         }
     }
 }
