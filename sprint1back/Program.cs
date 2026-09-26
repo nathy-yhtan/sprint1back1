@@ -83,7 +83,7 @@ namespace sprint1back
 
                             Console.WriteLine("\n--- INGREDIENTES EXTRAS ---");
                             Console.Write("Deseja adicionar Molho Secreto (+R$ 2,00)? (s/n): ");
-                            if (Console.ReadLine().ToLower() == "s") burguer.IngredientesExtras.Add("Molho Secreto");
+                            if (Console.ReadLine().ToLower() == "s") burguer.IngredientesExtras.Add("Molho"); //ToLower pra converter maiúsculos em minúsculas
 
                             Console.Write("Deseja adicionar Pimenta das Profundezas (+R$ 2,00)? (s/n): ");
                             if (Console.ReadLine().ToLower() == "s") burguer.IngredientesExtras.Add("Pimenta");
@@ -117,11 +117,11 @@ namespace sprint1back
                             Console.WriteLine("c) 1L (R$ 11,00)");
                             Console.Write("Escolha o tamanho (a/b/c): ");
 
-                            string optTamanho = Console.ReadLine().ToLower();
+                            string opcTamanho = Console.ReadLine().ToLower();
                             string tamanhoEscolhido = "300ml";
 
-                            if (optTamanho == "b") tamanhoEscolhido = "500ml";
-                            else if (optTamanho == "c") tamanhoEscolhido = "1L";
+                            if (opcTamanho == "b") tamanhoEscolhido = "500ml";
+                            else if (opcTamanho == "c") tamanhoEscolhido = "1L";
 
                             Bebida refri = new Bebida(201, "Refrigerante da Bolha", 7.00, tamanhoEscolhido);
                             pedidoAtual.AdicionarItem(refri);
