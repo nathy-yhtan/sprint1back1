@@ -78,18 +78,20 @@ namespace sprint1back
 
                     switch (opcao)
                     {
+
                         case "1":
                             Lanche hamburguer = new Lanche(101, "Hambúrguer de Siri", 18.50);
 
                             Console.WriteLine("\n--- INGREDIENTES EXTRAS ---");
-                            Console.Write("Deseja adicionar Molho Secreto (+R$ 2,00)? (s/n): ");
-                            if (Console.ReadLine().ToLower() == "s") hamburguer.IngredientesExtras.Add("Molho"); //ToLower pra converter maiúsculos em minúsculas
 
-                            Console.Write("Deseja adicionar Pimenta das Profundezas (+R$ 2,00)? (s/n): ");
-                            if (Console.ReadLine().ToLower() == "s") hamburguer.IngredientesExtras.Add("Pimenta");
+                            if (LerConfirmacao("Deseja adicionar Molho Secreto (+R$ 2,00)? (s/n): "))
+                                hamburguer.IngredientesExtras.Add("Molho");
 
-                            Console.Write("Deseja adicionar Cogumelos do Oceano (+R$ 2,00)? (s/n): ");
-                            if (Console.ReadLine().ToLower() == "s") hamburguer.IngredientesExtras.Add("Cogumelos");
+                            if (LerConfirmacao("Deseja adicionar Pimenta das Profundezas (+R$ 2,00)? (s/n): "))
+                                hamburguer.IngredientesExtras.Add("Pimenta");
+
+                            if (LerConfirmacao("Deseja adicionar Cogumelos do Oceano (+R$ 2,00)? (s/n): "))
+                                hamburguer.IngredientesExtras.Add("Cogumelos");
 
                             pedidoAtual.AdicionarItem(hamburguer);
                             break;
@@ -98,14 +100,15 @@ namespace sprint1back
                             Lanche batata = new Lanche(102, "Batatas Fritas", 10.00);
 
                             Console.WriteLine("\n--- INGREDIENTES EXTRAS ---");
-                            Console.Write("Deseja adicionar Molho Secreto (+R$ 2,00)? (s/n): ");
-                            if (Console.ReadLine().ToLower() == "s") batata.IngredientesExtras.Add("Molho");
 
-                            Console.Write("Deseja adicionar Pimenta das Profundezas (+R$ 2,00)? (s/n): ");
-                            if (Console.ReadLine().ToLower() == "s") batata.IngredientesExtras.Add("Pimenta");
+                            if (LerConfirmacao("Deseja adicionar Molho Secreto (+R$ 2,00)? (s/n): "))
+                                batata.IngredientesExtras.Add("Molho");
 
-                            Console.Write("Deseja adicionar Cogumelos do Oceano (+R$ 2,00)? (s/n): ");
-                            if (Console.ReadLine().ToLower() == "s") batata.IngredientesExtras.Add("Cogumelos");
+                            if (LerConfirmacao("Deseja adicionar Pimenta das Profundezas (+R$ 2,00)? (s/n): "))
+                                batata.IngredientesExtras.Add("Pimenta");
+
+                            if (LerConfirmacao("Deseja adicionar Cogumelos do Oceano (+R$ 2,00)? (s/n): "))
+                                batata.IngredientesExtras.Add("Cogumelos");
 
                             pedidoAtual.AdicionarItem(batata);
                             break;
@@ -115,9 +118,8 @@ namespace sprint1back
                             Console.WriteLine("a) 300ml (R$ 7,00)");
                             Console.WriteLine("b) 500ml (R$ 9,00)");
                             Console.WriteLine("c) 1L (R$ 11,00)");
-                            Console.Write("Escolha o tamanho (a/b/c): ");
 
-                            string opcTamanho = Console.ReadLine().ToLower();
+                            string opcTamanho = LerOpcaoValida("Escolha o tamanho (a/b/c): ", new string[] { "a", "b", "c" });
                             string tamanhoEscolhido = "300ml";
 
                             if (opcTamanho == "b") tamanhoEscolhido = "500ml";
@@ -166,5 +168,40 @@ namespace sprint1back
             Console.ReadLine();
 
         }
+
+
+        //método para validar respostas s/n
+        static bool LerConfirmacao(string mensagem)
+        {
+            while (true)
+            {
+                Console.Write(mensagem);
+                string entrada = Console.ReadLine()?.Trim().ToLower() ?? "";
+
+                if (entrada == "s") return true;
+                if (entrada == "n") return false;
+
+                Console.WriteLine("Opção inválida! Por favor, digite apenas 's' para sim ou 'n' para não.");
+            }
+        }
+
+        //método para validar respostas a/b/c
+        static string LerOpcaoValida(string mensagem, string[] opcoesValidas)
+        {
+            while (true)
+            {
+                Console.Write(mensagem);
+                string entrada = Console.ReadLine()?.Trim().ToLower() ?? "";
+
+                if (Array.Exists(opcoesValidas, op => op == entrada))
+                {
+                    return entrada;
+                }
+
+                Console.WriteLine($"Opção inválida! Escolha uma das opções: {string.Join(", ", opcoesValidas)}");
+            }
+        }
+
+
     }
 }
