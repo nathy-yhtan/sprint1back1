@@ -176,17 +176,17 @@ namespace sprint1back
             while (true)
             {
                 Console.Write(mensagem);
-                string entrada = Console.ReadLine()?.Trim().ToLower() ?? "";
+                string entrada = Console.ReadLine()?.Trim().ToLower() ?? ""; //? e "" Evita erros caso a leitura retorne um valor null
 
                 if (entrada == "s") return true;
                 if (entrada == "n") return false;
 
-                Console.WriteLine("Opção inválida! Por favor, digite apenas 's' para sim ou 'n' para não.");
+                Console.WriteLine("Opção inválida! Por favor, digite apenas 's' para sim ou 'n' para não. \n");
             }
         }
 
         //método para validar respostas a/b/c
-        static string LerOpcaoValida(string mensagem, string[] opcoesValidas)
+        static string LerOpcaoValida(string mensagem, string[] opcoesValidas) //[] indica array
         {
             while (true)
             {
@@ -198,7 +198,7 @@ namespace sprint1back
                     return entrada;
                 }
 
-                Console.WriteLine($"Opção inválida! Escolha uma das opções: {string.Join(", ", opcoesValidas)}");
+                Console.WriteLine($"Opção inválida! Escolha uma das opções: {string.Join(", ", opcoesValidas)} \n");
             }
         }
 
