@@ -79,19 +79,19 @@ namespace sprint1back
                     switch (opcao)
                     {
                         case "1":
-                            Lanche burguer = new Lanche(101, "Hambúrguer de Siri", 18.50);
+                            Lanche hamburguer = new Lanche(101, "Hambúrguer de Siri", 18.50);
 
                             Console.WriteLine("\n--- INGREDIENTES EXTRAS ---");
                             Console.Write("Deseja adicionar Molho Secreto (+R$ 2,00)? (s/n): ");
-                            if (Console.ReadLine().ToLower() == "s") burguer.IngredientesExtras.Add("Molho"); //ToLower pra converter maiúsculos em minúsculas
+                            if (Console.ReadLine().ToLower() == "s") hamburguer.IngredientesExtras.Add("Molho"); //ToLower pra converter maiúsculos em minúsculas
 
                             Console.Write("Deseja adicionar Pimenta das Profundezas (+R$ 2,00)? (s/n): ");
-                            if (Console.ReadLine().ToLower() == "s") burguer.IngredientesExtras.Add("Pimenta");
+                            if (Console.ReadLine().ToLower() == "s") hamburguer.IngredientesExtras.Add("Pimenta");
 
                             Console.Write("Deseja adicionar Cogumelos do Oceano (+R$ 2,00)? (s/n): ");
-                            if (Console.ReadLine().ToLower() == "s") burguer.IngredientesExtras.Add("Cogumelos");
+                            if (Console.ReadLine().ToLower() == "s") hamburguer.IngredientesExtras.Add("Cogumelos");
 
-                            pedidoAtual.AdicionarItem(burguer);
+                            pedidoAtual.AdicionarItem(hamburguer);
                             break;
 
                         case "2":
@@ -99,7 +99,7 @@ namespace sprint1back
 
                             Console.WriteLine("\n--- INGREDIENTES EXTRAS ---");
                             Console.Write("Deseja adicionar Molho Secreto (+R$ 2,00)? (s/n): ");
-                            if (Console.ReadLine().ToLower() == "s") batata.IngredientesExtras.Add("Molho Secreto");
+                            if (Console.ReadLine().ToLower() == "s") batata.IngredientesExtras.Add("Molho");
 
                             Console.Write("Deseja adicionar Pimenta das Profundezas (+R$ 2,00)? (s/n): ");
                             if (Console.ReadLine().ToLower() == "s") batata.IngredientesExtras.Add("Pimenta");
