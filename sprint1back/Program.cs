@@ -185,6 +185,7 @@ namespace sprint1back
             }
         }
 
+
         //método para validar respostas a/b/c
         static string LerOpcaoValida(string mensagem, string[] opcoesValidas) //[] indica array
         {
